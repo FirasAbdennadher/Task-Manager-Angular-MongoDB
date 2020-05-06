@@ -20,15 +20,15 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe(users => this.users = users);
+    this.userService.findAll().subscribe(users => this.users = users);
   }
 
 
   public onDeletetUser(user) {
     if(window.confirm('Voulez vous supprimer ?')) {
 
-      this.userService.DeleteUser(user.id).subscribe(data => {
-        this.userService.getAllUsers().subscribe(users => this.users = users);
+      this.userService.delete(user.id).subscribe(data => {
+        this.userService.findAll().subscribe(users => this.users = users);
       }, err => {
         console.log(err);
       });

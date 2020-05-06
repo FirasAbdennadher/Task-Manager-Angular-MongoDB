@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 
-import { AppRoutingModule } from './app.routing';
+import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';

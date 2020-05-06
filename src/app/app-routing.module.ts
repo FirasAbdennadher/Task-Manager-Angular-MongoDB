@@ -17,13 +17,12 @@ const routes: Routes =[
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
-  }
+  },
+  { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) }
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
-    BrowserModule,
     RouterModule.forRoot(routes,{
        useHash: true
     })

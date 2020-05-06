@@ -17,7 +17,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUser('users/'+ atob(this.activateRoute.snapshot.params.idUser)).
+    this.userService.findById('users/'+ atob(this.activateRoute.snapshot.params.idUser)).
     subscribe(user =>{
       this.user = user;
     },err=>{
