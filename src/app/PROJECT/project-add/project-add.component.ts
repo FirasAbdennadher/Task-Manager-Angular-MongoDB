@@ -3,6 +3,7 @@ import { User } from '../../core/models/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Project} from '../../core/models/project';
 import {ProjectService} from '../../core/services/project/project.service';
+import {UserService} from '../../core/services/user/user.service';
 @Component({
   selector: 'app-project-add',
   templateUrl: './project-add.component.html',
@@ -18,20 +19,26 @@ export class ProjectAddComponent implements OnInit {
     manager : [''],
     developer : ['']
   });
-  constructor(private projectService: ProjectService, private formBuilder: FormBuilder) { }
+  constructor(private projectService: ProjectService,private userService:UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.userService.getAllUsers().pipe(
+        map(items=>{
+          return items.filter(items===)
+        })
+    )
   }
-  createResponsible(name) {
+  /*createResponsible(name) {
     return new User(name, name, name, name, name, 'manager');
   }
 
   createDeveloper(name) {
     return new User(name, name, name, name, name, 'developer');
-  }
+  }*/
+
   public submit() {
-    this.project = this.formGroup.value as Project;
+  /*  this.project = this.formGroup.value as Project;
     console.log(this.project);
-    this.projectService.addProject(this.project).subscribe();
+    this.projectService.addProject(this.project).subscribe();*/
   }
 }
