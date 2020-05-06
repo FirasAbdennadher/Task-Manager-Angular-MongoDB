@@ -11,8 +11,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class UserListComponent implements OnInit {
 
   private users: User[] = [];
-  private id: number;
-  /*private displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];*/
 
   private displayedColumns: string[] = ['username', 'lastName', 'firstName', 'email', 'role', 'modifier', 'supprimer', 'details'];
 

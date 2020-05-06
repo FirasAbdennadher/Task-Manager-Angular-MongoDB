@@ -17,6 +17,7 @@ export class ProjectService {
     return this.httpClient.post(`${environment.urlBackend}projects/`, project);
   }
 
+
   public DeleteProject(data) {
     return this.httpClient.delete( `${environment.urlBackend}projects/`+data);
   }
@@ -27,12 +28,15 @@ export class ProjectService {
 
   public getAllProject(): Observable<Project[]> {
     return this.httpClient.get<any>(`${environment.urlBackend}projects`)
-        .pipe(map( result => result._embedded));
+        .pipe(map( result => result._embedded.projects));
   }
 
 
   public getProject(strings){
-    return this.httpClient.get(`${environment.urlBackend}`+strings );
+    return this.httpClient.get(`${environment.urlBackend}projects/`+strings );
+  }
+  public getDeveloperOfManagerProject(string){
+    return this.httpClient.get(string);
   }
 
 
