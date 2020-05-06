@@ -4,15 +4,15 @@
       <div class="row">
 
           <div class="col-md-8">
-              <a routerLink="/user-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Liste Users</b></a>
+              <a routerLink="/user-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Liste Utilisateur</b></a>
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title">Add User</h4>
-                      <p class="card-category">Complete your profile</p>
+                      <h4 class="card-title">Ajouter  Utilisateur</h4>
+                      <p class="card-category">Completer votre profil</p>
                   </div>
                   <div class="card-body">
 
-                      <form #userform="ngForm" (submit)="submit()">
+                      <form #userform="ngForm" (submit)="submit(userform.value)">
                           <div class="row">
                               <div class="col-md-10">
                                 <mat-form-field appearance="fill" class="example-full-width">
@@ -78,7 +78,7 @@
                               </div>
                           </div>
 
-                          <button [disabled]="userform.invalid" mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button>
+                          <button [disabled]="userform.invalid" mat-raised-button type="submit" class="btn btn-danger pull-right">Ajouter</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>

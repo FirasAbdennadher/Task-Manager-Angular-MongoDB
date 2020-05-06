@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form #userform="ngForm" (submit)="submit()">
+                        <form #userform="ngForm"  (ngSubmit)="updateUser(userform.value)">
                             <div class="row">
                                 <div class="col-md-10">
                                     <mat-form-field appearance="fill" class="example-full-width">
@@ -77,8 +77,8 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                            <a routerLink="/user-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Cancel</b></a>
-                            <button [disabled]="userform.invalid" mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button>
+                            <a routerLink="/user-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Annuler</b></a>
+                            <button [disabled]="userform.invalid" mat-raised-button type="submit" class="btn btn-danger pull-right">Modifier</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

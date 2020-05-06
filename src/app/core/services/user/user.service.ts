@@ -12,26 +12,28 @@ export class UserService {
   user: User[];
   constructor(private httpClient: HttpClient) {
   }
-  public addUser(user: User) {
+  public addUser(user) {
     return this.httpClient.post(`${environment.urlBackend}users/`, user);
   }
-  public updateUser(user: User) {
-    const index = this.user.findIndex( curent => curent.username === user.username);
-    this.user[index] = Object.assign(this.user[index], user);
-  }
-  public deleteUser(username: string) {
-    const index = this.user.findIndex( curent => curent.username === username);
-    const deleteItem = this.user.splice(index, 1);
-  }
-  public findUser(username: string ) {
-    const ser = this.user.find( curent => curent.username === username);
-    return Object.assign(new User('',
-      '', '', '', '', ''), ser);
 
+  public DeleteUser(data) {
+    return this.httpClient.delete( `${environment.urlBackend}users/`+data);
   }
+
+  public ModifUser(us,data) {
+    return this.httpClient.patch(us,data);
+  }
+
+
   public getAllUsers(): Observable<User[]> {
-     return this.httpClient.get<any>(`${environment.urlBackend}users`)
-      .pipe(map( result => result._embedded.users));
+    return this.httpClient.get<any>(`${environment.urlBackend}users`)
+        .pipe(map( result => result._embedded.users));
   }
+
+
+  public getUser(strings){
+    return this.httpClient.get(`${environment.urlBackend}`+strings );
+  }
+
 
 }

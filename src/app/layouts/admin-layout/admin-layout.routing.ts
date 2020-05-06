@@ -60,11 +60,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'project-add',   component: ProjectAddComponent },
     { path: 'project-list',   component: ProjectListComponent },
-    { path: 'project-update',   component: ProjectUpdateComponent },
-    { path: 'project-details',   component: ProjectDetailsComponent },
+    { path: 'project-update/:idUser',   component: ProjectUpdateComponent },
+    { path: 'project-details/:idUser',   component: ProjectDetailsComponent },
     { path: 'user-list',   component: UserListComponent },
-    { path: 'user-update',   component: UserUpdateComponent },
-    { path: 'user-details',   component: UserDetailsComponent },
+    { path: 'user-update/:idUser',   component: UserUpdateComponent },
+    { path: 'user-details/:idUser',   component: UserDetailsComponent },
     { path: 'typography',     component: TypographyComponent },
 
 
