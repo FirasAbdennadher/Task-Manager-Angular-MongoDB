@@ -65,7 +65,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'project-details/:idProject',   component: ProjectDetailsComponent },
     { path: 'user-list',   component: UserListComponent },
     { path: 'user-view',     component: ViewUserComponent },
-    { path: 'user-update/:idUser',   component: UserUpdateComponent },
+    { path: 'user-update/:idUser',   component: UserProfileComponent },
     { path: 'user-details/:idUser',   component: UserDetailsComponent },
     { path: 'typography',     component: TypographyComponent },
 

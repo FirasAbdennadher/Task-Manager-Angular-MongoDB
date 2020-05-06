@@ -25,7 +25,7 @@ export class ProjectAddComponent implements OnInit {
   constructor(private projectService: ProjectService,private userService:UserService, private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe(data=>
+    this.userService.findAll().subscribe(data=>
     {
      this.usersManager=data.filter(data=>data.role==='PROJECT_MANAGER');
      this.usersDeveloper=data.filter(data=>data.role==='DEVELOPER');
