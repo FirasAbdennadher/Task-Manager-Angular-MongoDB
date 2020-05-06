@@ -3,7 +3,7 @@ export class Project {
     constructor(
     public title?: string,
     public description?: string,
-    public manager: User = null,
+    public manager?: User,
     public developers?: User[]
     ) {}
 }

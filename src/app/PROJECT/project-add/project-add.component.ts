@@ -25,7 +25,6 @@ export class ProjectAddComponent implements OnInit {
   constructor(private projectService: ProjectService,private userService:UserService, private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
-    console.log("pff");
     this.userService.getAllUsers().subscribe(data=>
     {
      this.usersManager=data.filter(data=>data.role==='PROJECT_MANAGER');
@@ -35,18 +34,11 @@ export class ProjectAddComponent implements OnInit {
       console.log(err);
     })
   }
-  /*createResponsible(name) {
-    return new User(name, name, name, name, name, 'manager');
-  }
-
-  createDeveloper(name) {
-    return new User(name, name, name, name, name, 'developer');
-  }*/
 
   public submit(data) {
     this.projectService.addProject(data).subscribe(dt=>{
-      console.log(dt);
-      this.router.navigateByUrl('project-list');
+      console.log(data);
+    this.router.navigateByUrl('project-list');
     },err=>{
       console.log(err);
     });
