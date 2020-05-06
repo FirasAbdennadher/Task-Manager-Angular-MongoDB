@@ -8,6 +8,7 @@ import { ProjectAddComponent } from '../../PROJECT/project-add/project-add.compo
 import { ProjectListComponent } from '../../PROJECT/project-list/project-list.component';
 import { ProjectUpdateComponent } from '../../PROJECT/project-update/project-update.component';
 import { UserUpdateComponent } from '../../USER/user-update/user-update.component';
+import { ViewUserComponent } from '../../USER/view-user/view-user.component';
 import { TypographyComponent } from '../../typography/typography.component';
 
 import {ProjectDetailsComponent} from '../../PROJECT/project-details/project-details.component';
@@ -63,6 +64,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'project-update/:idProject',   component: ProjectUpdateComponent },
     { path: 'project-details/:idProject',   component: ProjectDetailsComponent },
     { path: 'user-list',   component: UserListComponent },
+    { path: 'user-view',     component: ViewUserComponent },
     { path: 'user-update/:idUser',   component: UserUpdateComponent },
     { path: 'user-details/:idUser',   component: UserDetailsComponent },
     { path: 'typography',     component: TypographyComponent },

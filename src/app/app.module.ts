@@ -29,6 +29,7 @@ import { ProjectUpdateComponent } from './PROJECT/project-update/project-update.
 import { ProjectAddComponent } from './PROJECT/project-add/project-add.component';
 import { ProjectListComponent } from './PROJECT/project-list/project-list.component';
 import { ProjectDetailsComponent } from './PROJECT/project-details/project-details.component';
+import { ViewUserComponent } from './USER/view-user/view-user.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { ProjectDetailsComponent } from './PROJECT/project-details/project-detai
     ProjectAddComponent,
     ProjectListComponent,
     ProjectDetailsComponent,
+    ViewUserComponent,
 
   ],
   providers: [],
