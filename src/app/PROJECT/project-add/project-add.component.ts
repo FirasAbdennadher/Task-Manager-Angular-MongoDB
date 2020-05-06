@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {Project} from '../../core/models/project';
 import {ProjectService} from '../../core/services/project/project.service';
 import {UserService} from '../../core/services/user/user.service';
+import {map} from 'rxjs/operators';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-project-add',
   templateUrl: './project-add.component.html',
@@ -11,22 +13,27 @@ import {UserService} from '../../core/services/user/user.service';
 })
 export class ProjectAddComponent implements OnInit {
   private project: Project;
-  private managers = ['Alaeddine', 'Firas', 'Mouhamed'].map(this.createResponsible);
-  private developers = ['amir', 'ahmed', 'asma'].map(this.createDeveloper);
   formGroup: FormGroup = this.formBuilder.group({
     title : ['', Validators.required],
     description : [''],
     manager : [''],
     developer : ['']
   });
-  constructor(private projectService: ProjectService,private userService:UserService, private formBuilder: FormBuilder) { }
+  private usersManager: User[] = [];
+  private usersDeveloper: User[] = [];
+
+  constructor(private projectService: ProjectService,private userService:UserService, private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().pipe(
-        map(items=>{
-          return items.filter(items===)
-        })
-    )
+    console.log("pff");
+    this.userService.getAllUsers().subscribe(data=>
+    {
+     this.usersManager=data.filter(data=>data.role==='PROJECT_MANAGER');
+     this.usersDeveloper=data.filter(data=>data.role==='DEVELOPER');
+
+    },err=>{
+      console.log(err);
+    })
   }
   /*createResponsible(name) {
     return new User(name, name, name, name, name, 'manager');
@@ -36,9 +43,12 @@ export class ProjectAddComponent implements OnInit {
     return new User(name, name, name, name, name, 'developer');
   }*/
 
-  public submit() {
-  /*  this.project = this.formGroup.value as Project;
-    console.log(this.project);
-    this.projectService.addProject(this.project).subscribe();*/
+  public submit(data) {
+    this.projectService.addProject(data).subscribe(dt=>{
+      console.log(dt);
+      this.router.navigateByUrl('project-list');
+    },err=>{
+      console.log(err);
+    });
   }
 }

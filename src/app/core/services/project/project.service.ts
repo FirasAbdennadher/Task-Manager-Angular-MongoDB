@@ -13,8 +13,8 @@ export class ProjectService {
   project: Project[];
   constructor(private httpClient: HttpClient) {
   }
-  public addProject(user) {
-    return this.httpClient.post(`${environment.urlBackend}projects/`, user);
+  public addProject(project) {
+    return this.httpClient.post(`${environment.urlBackend}projects/`, project);
   }
 
   public DeleteProject(data) {
