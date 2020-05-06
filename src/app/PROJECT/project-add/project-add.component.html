@@ -13,7 +13,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form [formGroup]="formGroup" (submit)="submit()">
+                        <form #projectform="ngForm" [formGroup]="formGroup" (submit)="submit(projectform.value)">
                             <div class="row">
                                 <div class="col-md-10">
                                     <mat-form-field appearance="fill">
@@ -36,7 +36,7 @@
                                     <mat-form-field>
                                         <mat-label>Manager :</mat-label>
                                         <mat-select formControlName="manager" id="form-input-manager">
-                                            <mat-option *ngFor="let manager of managers" [value]="manager">{{manager.username}}</mat-option>
+                                            <mat-option *ngFor="let userManager of usersManager" [value]="userManager" >{{userManager.username}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -47,13 +47,13 @@
                                     <mat-form-field>
                                         <mat-label>Developer</mat-label>
                                         <mat-select formControlName="developer" id="form-input-developer" multiple>
-                                            <mat-option *ngFor="let developer of developers" [value]="developer">{{developer.username}}</mat-option>
+                                            <mat-option *ngFor="let userDeveloper of usersDeveloper" [value]="userDeveloper">{{userDeveloper.username}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
                             </div>
 
-                            <button [disabled]="formGroup.invalid" type="submit" mat-flat-button color="primary" class="btn btn-danger pull-right">Submit</button>
+                            <button [disabled]="formGroup.invalid" type="submit" mat-flat-button color="primary" class="btn btn-danger pull-right">Ajouter</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
