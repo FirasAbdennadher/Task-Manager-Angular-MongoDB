@@ -1,0 +1,90 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-md-8">
+
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Update User</h4>
+
+                    </div>
+                    <div class="card-body">
+
+                        <form #userform="ngForm" (submit)="submit()">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>user name :</mat-label>
+                                        <input matInput [(ngModel)]="user.username" name="username" id="form-input-username" required
+                                               #usernameNgModel="ngModel">
+                                        <mat-error *ngIf="usernameNgModel.invalid">
+                                            <span *ngIf="usernameNgModel.errors.required">Username is required</span>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Password :</mat-label>
+                                        <input type="password" matInput [(ngModel)]="user.password" name="password" id="form-input-password" required
+                                               minlength="8" #pwdNgModel="ngModel" #pwdDom>
+                                        <mat-error *ngIf="pwdNgModel.invalid">
+                                            <span *ngIf="pwdNgModel.errors.required">password is required</span>
+                                            <span *ngIf="pwdNgModel.errors.minlength">password length is short</span>
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>First Name :</mat-label>
+                                        <input matInput [(ngModel)]="user.firstName" name="firstName" id="form-input-firstName">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Last Name :</mat-label>
+                                        <input matInput [(ngModel)]="user.lastName" name="lastName" id="form-input-lastName">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Email :</mat-label>
+                                        <input type="email" matInput [(ngModel)]="user.email" name="email" id="form-input-email">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field>
+                                        <mat-label>Role :</mat-label>
+                                        <mat-select name="role" [(ngModel)]="user.role" id="form-input-role">
+                                            <mat-option [value]="'ADMIN'">Admin</mat-option>
+                                            <mat-option [value]="'PROJECT_MANAGER'">Project Manager</mat-option>
+                                            <mat-option [value]="'DEVELOPER'">Develepor</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <a routerLink="/user-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Cancel</b></a>
+                            <button [disabled]="userform.invalid" mat-raised-button type="submit" class="btn btn-danger pull-right">Submit</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

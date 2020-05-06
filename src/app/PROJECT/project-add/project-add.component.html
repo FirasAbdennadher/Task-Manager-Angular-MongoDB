@@ -1,0 +1,65 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <a routerLink="/project-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Liste Project</b></a>
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Add Project</h4>
+                        <p class="card-category">Complete your Project</p>
+                    </div>
+                    <div class="card-body">
+
+                        <form [formGroup]="formGroup" (submit)="submit()">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>title :</mat-label>
+                                        <input matInput formControlName="title" id="form-input-name" >
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Description :</mat-label>
+                                        <input matInput  formControlName="description" id="form-input-description">
+                                    </mat-form-field>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field>
+                                        <mat-label>Manager :</mat-label>
+                                        <mat-select formControlName="manager" id="form-input-manager">
+                                            <mat-option *ngFor="let manager of managers" [value]="manager">{{manager.username}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <mat-form-field>
+                                        <mat-label>Developer</mat-label>
+                                        <mat-select formControlName="developer" id="form-input-developer" multiple>
+                                            <mat-option *ngFor="let developer of developers" [value]="developer">{{developer.username}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <button [disabled]="formGroup.invalid" type="submit" mat-flat-button color="primary" class="btn btn-danger pull-right">Submit</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
