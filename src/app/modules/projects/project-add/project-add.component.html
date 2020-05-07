@@ -35,7 +35,7 @@
                                     <mat-form-field>
                                         <mat-label>Manager :</mat-label>
                                         <mat-select formControlName="manager" id="form-input-manager">
-                                            <mat-option *ngFor="let manager of usersManager" [value]="manager" >{{manager.username}}</mat-option>
+                                            <mat-option *ngFor="let manager of usersManager" [value]="'/users/'+manager.id" >{{manager.username}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -45,8 +45,8 @@
                                 <div class="col-md-10">
                                     <mat-form-field>
                                         <mat-label>Developer</mat-label>
-                                        <mat-select formControlName="developer" id="form-input-developer" multiple>
-                                            <mat-option *ngFor="let developers of usersDeveloper" [value]="developers">{{developers.username}}</mat-option>
+                                        <mat-select formControlName="developers" id="form-input-developers" multiple>
+                                            <mat-option *ngFor="let developer of usersDeveloper" [value]="'/users/'+developer.id">{{developer.username}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>

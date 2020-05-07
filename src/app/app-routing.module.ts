@@ -13,19 +13,16 @@ const routes: Routes =[
   }, {
     path: '',
     component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-    }]
-  },
-  { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) }
+    children: [
+        { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
+      { path: 'projects', loadChildren: () => import('./modules/projects/projects.module').then(m => m.ProjectsModule) },
+      { path: 'tasks', loadChildren: () => import('./modules/tasks/tasks.module').then(m => m.TasksModule) }]
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes,{
-       useHash: true
-    })
+    RouterModule.forRoot(routes)
   ],
   exports: [
   ],

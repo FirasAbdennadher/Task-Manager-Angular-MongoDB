@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../core/services/user/user.service';
-import {User} from '../../core/models/user';
+import {UserService} from '../../../core/services/user/user.service';
+import {User} from '../../../core/models/user';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -34,12 +34,6 @@ export class UserListComponent implements OnInit {
       });
       //this.router.navigateByUrl('/users/delete/' +btoa(user.id));
     }
-  }
-
-  public onModifUser(user) {
-    this.router.navigateByUrl('user-update/' + btoa(user.id));
-
-
   }
 
   public onGetUser(user) {

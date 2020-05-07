@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from '../../models/user';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {observable, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -34,6 +34,12 @@ export class UserService {
 
     public findById(id: string): Observable<User>  {
         return this.httpClient.get<User>(`${environment.urlBackend}users/${id}` );
+    }
+
+    public existsByUsername(username: string): Observable<boolean>  {
+        const params = new HttpParams().append('username', username);
+        return this.httpClient.get<boolean>(`${environment.urlBackend}users/search/usernameExists`,
+            {params : params});
     }
 
 

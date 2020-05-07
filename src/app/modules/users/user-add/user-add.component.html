@@ -7,7 +7,8 @@
               <a routerLink="/user-list" class="btn btn-danger" role="button" aria-pressed="true"><b>Liste Utilisateur</b></a>
               <div class="card">
                   <div class="card-header card-header-danger">
-                      <h4 class="card-title">Ajouter  Utilisateur</h4>
+                      <h4 class="card-title" *ngIf="!id">Ajouter  Utilisateur</h4>
+                      <h4 class="card-title" *ngIf="id">Edit  Utilisateur</h4>
                       <p class="card-category">Completer votre profil</p>
                   </div>
                   <div class="card-body">
@@ -18,14 +19,16 @@
                                 <mat-form-field appearance="fill" class="example-full-width">
                                     <mat-label>user name :</mat-label>
                                     <input matInput [(ngModel)]="user.username" name="username" id="form-input-username" required
-                                           #usernameNgModel="ngModel">
+                                           minlength="3" appUsernameExist #usernameNgModel="ngModel">
                                     <mat-error *ngIf="usernameNgModel.invalid">
                                         <span *ngIf="usernameNgModel.errors.required">Username is required</span>
+                                        <span *ngIf="usernameNgModel.errors.minlength">Username is short</span>
+                                        <span *ngIf="usernameNgModel.errors.usernameExist">Username exist</span>
                                     </mat-error>
                                   </mat-form-field>
                               </div>
                           </div>
-                          <div class="row">
+                          <div class="row" *ngIf="!id">
                               <div class="col-md-10">
                                   <mat-form-field appearance="fill">
                                       <mat-label>Password :</mat-label>

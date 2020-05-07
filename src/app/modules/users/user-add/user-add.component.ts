@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../core/services/user/user.service';
-import {User} from '../../core/models/user';
+import {UserService} from '../../../core/services/user/user.service';
+import {User} from '../../../core/models/user';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-user-profile',
-    templateUrl: './user-profile.component.html',
-    styleUrls: ['./user-profile.component.css']
+    templateUrl: './user-add.component.html',
+    styleUrls: ['./user-add.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserAddComponent implements OnInit {
     private user: User = new User(
         '',
         '',
@@ -23,10 +23,10 @@ export class UserProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        const id = atob(this.activateRoute.snapshot.params.idUser);
+        const id = this.activateRoute.snapshot.params.id;
         if (id) {
             this.id = id;
-            this.userService.findById(atob(this.activateRoute.snapshot.params.idUser)).subscribe(us => {
+            this.userService.findById(this.id).subscribe(us => {
                 this.user = us;
             }, err => {
                 console.log(err);
@@ -39,14 +39,14 @@ export class UserProfileComponent implements OnInit {
         if (this.id) {
             this.userService.edit(this.id, this.user).subscribe(dt => {
                 console.log(dt);
-                this.router.navigateByUrl('user-list');
+                this.router.navigateByUrl('users');
             }, err => {
                 console.log(err);
             });
         } else {
             this.userService.add(this.user).subscribe(dt => {
                 console.log(dt);
-                this.router.navigateByUrl('user-list');
+                this.router.navigateByUrl('users');
             }, err => {
                 console.log(err);
             });
