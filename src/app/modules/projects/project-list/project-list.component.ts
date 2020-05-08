@@ -10,20 +10,16 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ProjectListComponent implements OnInit {
   private projects: Project[] = [];
   private displayedColumns: string[] = ['title', 'description', 'managerName', 'developer', 'detail', 'update', 'delete'];
-  constructor(private projectService: ProjectService,public activateRoute: ActivatedRoute, private router: Router) { }
+  constructor(private projectService: ProjectService, public activateRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.projectService.getAllProject().subscribe(projects => {
-      this.projects = projects;
-    },err=>{
-      console.log(err);
-    })
+
   }
 
 
 
   public onDeletetProject(project) {
-    if(window.confirm('Voulez vous supprimer ?')) {
+    if (window.confirm('Voulez vous supprimer ?')) {
 
       this.projectService.DeleteProject(project.id).subscribe(data => {
         this.projectService.getAllProject().subscribe(projects => this.projects = projects);
