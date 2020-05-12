@@ -1,52 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../core/services/user/user.service';
 import {User} from '../../../core/models/user';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+    selector: 'app-user-list',
+    templateUrl: './user-list.component.html',
+    styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
 
-  private users: User[] = [];
+    private users: User[] = [];
 
-  private displayedColumns: string[] = ['username', 'lastName', 'firstName', 'email', 'role', 'modifier', 'supprimer', 'details'];
+    private displayedColumns: string[] = ['username', 'lastName', 'firstName', 'email', 'role', 'modifier', 'supprimer', 'details'];
 
-  constructor(private userService: UserService, public activateRoute: ActivatedRoute, private router: Router) {
-
-
-  }
-
-  ngOnInit() {
-    this.userService.findAll().subscribe(users => this.users = users);
-  }
+    constructor(private userService: UserService, public activateRoute: ActivatedRoute, private router: Router) {
 
 
-  public onDeletetUser(user) {
-    if(window.confirm('Voulez vous supprimer ?')) {
-
-      this.userService.delete(user.id).subscribe(data => {
-        this.userService.findAll().subscribe(users => this.users = users);
-      }, err => {
-        console.log(err);
-      });
-      //this.router.navigateByUrl('/users/delete/' +btoa(user.id));
     }
-  }
 
-  public onGetUser(user) {
+    ngOnInit() {
+        this.userService.findAll().subscribe(users => this.users = users);
+    }
 
-    this.router.navigateByUrl('user-details/' + btoa(user.id));
-    // console.log(user._links.self.href);
-    // this.userService.getUser(user._links.self.href);//.
-    /*  subscribe(data=>{
-        this.user=data;
-        console.log(user);
+    public onDeletetUser(user) {
+        if (window.confirm('Voulez vous supprimer ?')) {
+            this.userService.delete(user.id).subscribe(data => {
+                this.userService.findAll().subscribe(users => this.users = users);
+            }, err => {
+                console.log(err);
+            });
+        }
+    }
 
-      },err=>{
-        console.log(err);
-      });*/
-  }
+
 }

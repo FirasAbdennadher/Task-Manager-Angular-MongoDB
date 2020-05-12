@@ -12,17 +12,12 @@
                         <h4 class="card-title" >Titre :{{project.title}}</h4>
                         <p class="card-description" >Description :{{project.description}}</p>
                         <p class="card-description" >Manager : {{usersManager.username}}</p>
-                        <div class="col-md-10" *ngFor="let xx of usersDeveloper">Developers : {{xx.username}}</div>
+                        <div class="col-md-10" *ngFor="let dev of usersDeveloper">Developers : {{dev.username}}</div>
                         <a routerLink="../../project-list" role="button" aria-pressed="true" class="btn btn-danger btn-round">Retour</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="card-header card-header-danger">
-    <h4 class="card-title">Ajouter  Utilisateur</h4>
-    <p class="card-category">Completer votre profil</p>
 </div>
 

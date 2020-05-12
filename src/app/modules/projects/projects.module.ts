@@ -6,8 +6,6 @@ import { ProjectsComponent } from './projects.component';
 import {ProjectAddComponent} from './project-add/project-add.component';
 import {ProjectDetailsComponent} from './project-details/project-details.component';
 import {ProjectListComponent} from './project-list/project-list.component';
-import {ProjectUpdateComponent} from './project-update/project-update.component';
-import {UsersRoutingModule} from '../users/users-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
@@ -20,8 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
       ProjectsComponent,
       ProjectAddComponent,
       ProjectDetailsComponent,
-      ProjectListComponent,
-      ProjectUpdateComponent
+      ProjectListComponent
   ],
   imports: [
     CommonModule,

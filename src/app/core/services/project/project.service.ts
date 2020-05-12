@@ -1,43 +1,44 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {Project} from '../../models/project';
-import {User} from '../../models';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ProjectService {
-  project: Project[];
-  constructor(private httpClient: HttpClient) {
-  }
-  public addProject(project) {
-    return this.httpClient.post(`${environment.urlBackend}projects/`, project);
-  }
+    project: Project[];
+
+    constructor(private httpClient: HttpClient) {
+    }
+
+    public add(project: Project): Observable<Project> {
+        return this.httpClient.post<Project>(`${environment.urlBackend}projects/`, project);
+    }
 
 
-  public DeleteProject(data) {
-    return this.httpClient.delete( `${environment.urlBackend}projects/`+data);
-  }
+    public delete(id: string): Observable<any> {
+        return this.httpClient.delete<any>(`${environment.urlBackend}projects/${id}`);
+    }
 
-  public ModifProject(us,data) {
-    return this.httpClient.patch(us,data);
-  }
+    public edit(id: string, project: Project): Observable<Project> {
+        return this.httpClient.patch<Project>(`${environment.urlBackend}projects/${id}`, project);
+    }
 
-  public getAllProject(): Observable<Project[]> {
-    return this.httpClient.get<any>(`${environment.urlBackend}projects`)
-        .pipe(map( result => result._embedded.projects));
-  }
+    public findAll(): Observable<Project[]> {
+        return this.httpClient.get<any>(`${environment.urlBackend}projects`)
+            .pipe(map(result => result._embedded.projects));
+    }
 
+    public findById(id: string): Observable<Project> {
+        return this.httpClient.get<Project>(`${environment.urlBackend}projects/${id}`);
+    }
 
-  public getProject(strings){
-    return this.httpClient.get(`${environment.urlBackend}projects/`+strings );
-  }
-  public getDeveloperOfManagerProject(string){
-    return this.httpClient.get(string);
-  }
+    public getDeveloperOfManagerProject(id: string): Observable<any> {
+        return this.httpClient.get<any>(id);
+    }
 
 
 }
