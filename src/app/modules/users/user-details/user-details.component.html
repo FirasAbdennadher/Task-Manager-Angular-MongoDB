@@ -1,0 +1,114 @@
+
+<br><br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Profile Image -->
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">About {{user.username}}</h3>
+                </div>
+                <div class="card-body box-profile">
+                    <div class="text-center">
+                        <img
+                                class="profile-user-img img-fluid img-circle"
+                                src="../../../../assets/img/user.png"
+                                alt="User profile picture"
+                        />
+                    </div>
+
+                    <h3 class="profile-username text-center">{{user.firstName}} {{user.lastName}}</h3>
+
+                    <p class="text-muted text-center">{{user.role}}</p>
+
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Email</b> <a class="float-right">{{user.email}}</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Number of project</b> <a class="float-right">2</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">About Projects</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Project 1</strong>
+
+                    <p class="text-muted">
+                        Description project
+                    </p>
+                    <hr />
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> project 2</strong>
+                    <p class="text-muted">Description project</p>
+
+
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header p-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#activity" data-toggle="tab"
+                            >Project 1</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#settings" data-toggle="tab"
+                            >Project 2</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="activity">
+                            <!-- Post -->
+                            tasks for  {{user.username}} in project 1
+                            <!-- /.post -->
+                        </div>
+
+
+
+
+                        <div class="tab-pane" id="settings">
+                            <!-- Post -->
+                            tasks for  {{user.username}} in project 2
+                            <!-- /.post -->
+                        </div>
+
+
+
+
+
+
+
+                        <!-- /.tab-pane -->
+                    </div>
+                    <!-- /.tab-content -->
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+

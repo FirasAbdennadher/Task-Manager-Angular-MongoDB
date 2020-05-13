@@ -1,0 +1,185 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <form #taskform="ngForm" (submit)="submit()">
+        <div class="row">
+            <div class="col-md-6">
+                <a routerLink="/users" class="btn btn-danger" role="button" aria-pressed="true"><b>Liste Utilisateur</b></a>
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title" >Ajouter  Task</h4>
+
+                    </div>
+                    <div class="card-body">
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field>
+                                        <mat-label>Project :</mat-label>
+                                        <mat-select name="project" [(ngModel)]="task.project" id="form-input-project">
+                                            <mat-option [value]="'p1'">angular</mat-option>
+                                            <mat-option [value]="'p2'">DBA</mat-option>
+                                            <mat-option [value]="'p3'">jee</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field>
+                                        <mat-label>Developeur :</mat-label>
+                                        <mat-select name="assignedTo" [(ngModel)]="task.assignedTo" id="form-input-user">
+                                            <mat-option [value]="'ala'">ala</mat-option>
+                                            <mat-option [value]="'firas'">firas</mat-option>
+                                            <mat-option [value]="'elleuch'">elleuch</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field appearance="fill" class="example-full-width">
+                                        <mat-label>Task Title :</mat-label>
+                                        <input matInput [(ngModel)]="task.title" name="title" id="form-input-title" required
+                                               minlength="3"  #titleNgModel="ngModel">
+                                        <mat-error *ngIf="titleNgModel.invalid">
+                                            <span *ngIf="titleNgModel.errors.required">Title is required</span>
+                                            <span *ngIf="titleNgModel.errors.minlength">Title is short</span>
+
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Description :</mat-label>
+                                        <input matInput [(ngModel)]="task.description" name="Description" id="form-input-description">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-label>Choose File :</mat-label>
+                                <input type="file" formControlName="image" (change)="fileProgress($event)" id="form-input-file">
+
+                                <button _ngcontent-pcd-c113="" type="button" class="btn btn-outline-primary btn-round" (click)="onAdd()">add File</button>
+                            </div>
+                        </div>
+                           <br><br>
+                            <div class="clearfix"></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <br><br>
+                <div class="card">
+
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Esatimation</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="center">
+                                    <h5>Number of Days</h5>
+                                    <div class="number-input md-number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus btn btn-danger btn-number"><span class="glyphicon glyphicon-minus"></span></button>
+                                        <input class="quantity" min="0" max="15" name="quantity" value="{{day}}" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus btn btn-success btn-numbe"><span class="glyphicon glyphicon-plus"></span></button>
+                                    </div>
+                                </div>
+
+                                <div class="center">
+                                    <h5>Number of Hours</h5>
+                                    <div class="number-input md-number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus btn btn-danger btn-number"><span class="glyphicon glyphicon-minus"></span></button>
+                                        <input class="quantity" min="0" max="7" name="quantity" value="{{hour}}" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus btn btn-success btn-numbe"><span class="glyphicon glyphicon-plus"></span></button>
+                                    </div>
+                                </div>
+
+                                <div class="center">
+                                    <h5>Number of Minutes</h5>
+                                    <div class="number-input md-number-input">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus btn btn-danger btn-number"><span class="glyphicon glyphicon-minus"></span></button>
+                                        <input class="quantity" min="0" max="59" name="quantity" value="{{minute}}" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus btn btn-success btn-numbe"><span class="glyphicon glyphicon-plus"></span></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <br><br>
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Files</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let file of filename">
+                                        <td>{{file}}</td>
+                                        <td class="text-right py-0 align-middle">
+                                            <div class="btn-group btn-group-sm">
+
+
+                                                <button (click)="onDelete(file)" class="btn btn-danger btn-just-icon"mat-fab color="primary"
+                                                        aria-label="Example icon button with a delete icon">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <a href="#" class="btn btn-secondary">Cancel</a>
+                <button [disabled]="taskform.invalid" mat-raised-button type="submit" class="btn btn-danger float-right">Create new Task</button>
+
+            </div>
+        </div>
+
+            <div class="row">
+
+            </div>
+        </form>
+
+
+
+
+
+    </div>
+</div>
+

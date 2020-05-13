@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row" >
+
+            <div class="col-md-4" *ngFor="let user of users">
+
+                <div class="card card-chart">
+                    <div class="card-body">
+                        <CENTER><h3 class="card-title">{{ user.username }}</h3> </CENTER>
+
+                        <p class="card-category">
+                            <span class="label label-inverse">{{ user.email }}</span>
+                        </p>
+
+                        {{ user.firstName }} {{ user.lastName }}
+                        <div *ngIf="user.role=='ADMIN'"><h5>  <span class="badge bg-danger">{{ user.role }}</span></h5></div>
+                        <div *ngIf="user.role=='PROJECT_MANAGER'"><h5>  <span class="badge bg-success">{{ user.role }}</span></h5></div>
+                        <div *ngIf="user.role=='DEVELOPER'"><h5> <span class="badge bg-warning">{{ user.role }}</span></h5></div>
+
+
+                    </div>
+                    <div class="card-footer">
+
+                        <a class="btn btn-info btn-sm" (click)="onModifUser(user)">
+                            <span class="material-icons">edit</span>
+                            Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" (click)="onDeletetUser(user)">
+                            <span class="material-icons">delete_outline</span>
+                            Delete
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

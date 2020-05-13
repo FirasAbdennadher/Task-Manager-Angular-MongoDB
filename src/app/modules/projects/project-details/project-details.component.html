@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <br>
+            <br>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+                <div class="card card-profile">
+
+                    <div class="card-body">
+                        <h4 class="card-title" >Titre :{{project.title}}</h4>
+                        <p class="card-description" >Description :{{project.description}}</p>
+                        <p class="card-description" >Manager : {{usersManager.username}}</p>
+                        <div class="col-md-10" *ngFor="let dev of usersDeveloper">Developers : {{dev.username}}</div>
+                        <a routerLink="../../project-list" role="button" aria-pressed="true" class="btn btn-danger btn-round">Retour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
