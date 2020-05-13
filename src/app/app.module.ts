@@ -13,6 +13,7 @@ import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.componen
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
         RouterModule,
         HttpClientModule,
         AppRoutingModule,
+        NgbModule,
         // AgmCoreModule.forRoot({
         //   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
         // }),
