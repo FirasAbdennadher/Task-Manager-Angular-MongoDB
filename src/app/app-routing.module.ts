@@ -14,6 +14,7 @@ const routes: Routes =[
     path: '',
     component: AdminLayoutComponent,
     children: [
+
         { path: 'users', loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule) },
       { path: 'projects', loadChildren: () => import('./modules/projects/projects.module').then(m => m.ProjectsModule) },
       { path: 'tasks', loadChildren: () => import('./modules/tasks/tasks.module').then(m => m.TasksModule) }]
